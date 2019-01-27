@@ -15,11 +15,11 @@ configPath     = /home/motion/config
 [smtp.cloud]
 host           = smtp.gmail.com
 port           = 465
-fromAddr       = ganeshramconnecteddevices@gmail.com
-toAddr         = ganeshramconnecteddevices@gmail.com
+fromAddr       = ganeshramconnectedDevices@gmail.com
+toAddr         = ganeshramconnectedDevices@gmail.com
 toMediaAddr    = Not Set
 toTxtAddr      = Not Set
-authToken      = Ganeshram?1996
+authToken      = Connected_devices
 enableAuth     = True
 enableCrypt    = True
 
@@ -75,5 +75,5 @@ cloudSvcType   = UBIDOTS
 
 [device]
 enableEmulator = True
-pollCycleSecs  = 2
+pollCycleSecs  = 15
 nominalTemp    = 20
