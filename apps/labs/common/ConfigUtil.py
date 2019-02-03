@@ -1,9 +1,7 @@
 '''
 Created on Jan 24, 2019
-
 @author: GANESHRAM KANAKASABAI
 '''
-
 import configparser#importing configParser module for working with configuration files
 import os#importing the OS module  for using operating system dependent functionality
 DEFAULT_CONFIG_FILE = "../data/ConnectedDevicesConfig.props"
@@ -14,7 +12,6 @@ class ConfigUtil:#Creating a  ConfigUtil class
     isLoaded = False
     '''
     Constructor for ConfigUtil.
-    
     @param configFile The name of the configuration file to load.
     '''
     def __init__(self, configFile = None):
@@ -31,7 +28,6 @@ class ConfigUtil:#Creating a  ConfigUtil class
     '''
     Returns the entire configuration object. If the config file hasn't
     yet been loaded, it will be loaded.
-    
     @param forceReload Defaults to false; if true, will reload the config.
     @return: The entire configuration file.
     '''       
@@ -41,15 +37,12 @@ class ConfigUtil:#Creating a  ConfigUtil class
         return self.configData
     '''
     Returns the name of the configuration file.
-    
     @return: The name of the config file.
     '''
-    
     def getConfigFile(self):
         return self.configFile
     '''
     Attempts to retrieve the value of 'key' from the config.
-    
     @param: section The name of the section to parse.
     @param: key The name of the key to lookup in 'section'.
     @param: forceReload Defaults to false; if true will reload the config.
@@ -59,7 +52,6 @@ class ConfigUtil:#Creating a  ConfigUtil class
         return self.getConfig(forceReload).get(section, key)
     '''
     Simple boolean check if the config data is loaded or not.
-    
     @return: boolean True on success; false otherwise.
     '''
     def isConfigDataLoaded(self):

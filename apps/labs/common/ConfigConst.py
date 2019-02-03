@@ -1,9 +1,7 @@
 '''
 Created on Jan 24, 2019
-
 @author: GANESHRAM KANAKASABAI
 '''
-
 
 class ConfigConst(object):#Creating ConfigConst class
     '''
@@ -47,5 +45,5 @@ class ConfigConst(object):#Creating ConfigConst class
     ENABLE_LOGGING_KEY = 'enableLogging';
     POLL_CYCLES_KEY = 'pollCycleSecs';
     
-
-
+    NOMINAL_TEMP = 'nominalTemp'
+    

@@ -1,6 +1,5 @@
 '''
 Created on Jan 24, 2019
-
 @author: GANESHRAM KANAKASABAI
 '''
 from labs.common import ConfigUtil
@@ -20,7 +19,7 @@ class SmtpClientConnector(object):
         print('Configuration data...\n' + str(self.config));
         self.config.loadConfig();
     '''
-    PublicMessage function is used to build and construct message and is sent as a notification.
+    PublishMessage function is used to build and construct message and is sent as a notification.
     @param topic: Subject to Email
     @param data : Sensor notification
     '''  
