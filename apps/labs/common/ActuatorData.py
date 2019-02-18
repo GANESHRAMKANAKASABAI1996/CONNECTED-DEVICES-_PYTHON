@@ -2,8 +2,8 @@
 Created on Feb 1, 2019
 @author: GANESHRAM KANAKASABAI
 '''
-import os#importing the OS module  for using operating system dependent functionality
-from datetime import datetime#importing datetime to manipulate with date and time values
+import os#importing os
+from datetime import datetime#importing datetime to perform date and time operations
 COMMAND_OFF = 0
 COMMAND_ON = 1
 COMMAND_SET = 2
@@ -13,12 +13,16 @@ STATUS_ACTIVE = 1
 ERROR_OK = 0
 ERROR_COMMAND_FAILED = 1
 ERROR_NON_RESPONSIBLE = -1
+'''
+This class is created to create an Actuator Data to interact with Raspberry Pi
+'''
 
-class ActuatorData():#Creating class actuator data which would be responsible for sense_hat display
+class ActuatorData():
     '''
     constructor
-     _init_() is called during object initialization.
+    _init_() is called during object initialization.
     '''
+    
     def __init__(self):
         self.updateTimeStamp()
         
@@ -31,62 +35,121 @@ class ActuatorData():#Creating class actuator data which would be responsible fo
     stateData = None
     val = 0.0
     
-    def getCommand(self):#returns commands
-        return self.command
+    '''
+    This function returns the value of command
     
-    def getName(self):#returns the name
+    '''
+    def getCommand(self):
+            return self.command
+    '''
+    This function returns the name
+    @return: name
+    
+    '''    
+    
+    def getName(self):
         return self.name
+    '''
+    This function returns the state of the data
+    @return: StateData
+    '''
     
-    def getStateData(self):#returns the state data
+    def getStateData(self):
         return self.stateData
+    '''
+    This function is used to get status code
+    @return: StatusCode
+    '''
     
-    def getStatusCode(self):#returns status code
+    def getStatusCode(self):
         return self.statusCode
+    '''
+    This function is used to get error code if present
+    @return: errorCode
+    '''
     
-    def getErrorCode(self):#returns error code
+    def getErrorCode(self):
         return self.errCode
-    
-    def getValue(self):#returns the current value
+    '''
+    This function is used to get the current value
+    @return: value
+    '''
+
+    def getValue(self):
         return self.val;
+    '''
+    This function returns the error values
+    @return: hasError
+    '''
     
-    def hasError(self):#returns the error value
+    def hasError(self):
         return self.hasError
+    '''
+    This function sets the command
+    '''
     
-    def setCommand(self, command):#stores command
+    def setCommand(self, command):
         self.command = command
-        
-    def setName(self, name):#stores name
+    '''
+    This function is used to store name
+    '''
+    
+    def setName(self, name):
         self.name = name
-        
-    def setStateData(self, stateData):#stores state data
+    '''
+    This function stores the state data information
+    '''
+    
+    def setStateData(self, stateData):
         self.stateData = stateData
-        
-    def setStatusCode(self, statusCode):#stores status code
+    '''
+    This function is used to store status code values
+    '''
+    
+    def setStatusCode(self, statusCode):
         self.statusCode = statusCode
         
-    def setErrorCode(self, errCode):#stores error code
+    '''
+    Function is used to set error code
+    @param errCode: Error Code 
+    '''
+    
+    def setErrorCode(self, errCode):
         self.errCode = errCode
         if (self.errCode != 0):
             self.hasError = True
         else:
             self.hasError = False
             
-    def setValue(self, val):#stores value
+    '''
+    Function is used as a setter to set values in Actuator Data
+    @param val: The difference between current temp and nominal temp 
+    '''
+    
+    def setValue(self, val):
         self.val = val
         
-    def updateData(self, data):#passes the data to corresponding containers
+    '''
+    Updates the object with updated values
+    @param data: updated values of Actuator Data 
+    '''
+    def updateData(self, data):
         self.command = data.getCommand()
         self.statusCode = data.getStatusCode()
         self.errCode = data.getErrorCode()
         self.stateData = data.getStateData()
         self.val = data.getValue()
-        
-    def updateTimeStamp(self):#stores the current time
-        self.timeStamp = str(datetime.now())
     '''
-    ToString function returns object in human readable format
-    @return: Object in human readable customized format
-    '''  
+    This function updates the timeStamp value
+    '''
+        
+    def updateTimeStamp(self):
+        self.timeStamp = str(datetime.now())
+        
+    '''
+    Its a toString function which presents object in human readable format
+    @return: customStr : Object in human readable format
+    '''
     def __str__(self):
         customStr = \
         str(self.name + ':' + \
