@@ -2,9 +2,8 @@
 Created on Jan 19, 2019
 @author: GANESHRAM KANAKASABAI
 '''
-from datetime import datetime
-import os
-
+from datetime import datetime # importing datetime to perform date and time operations
+import os # importing os
 
 class SensorData(object):
     '''

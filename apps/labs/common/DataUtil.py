@@ -4,26 +4,26 @@ Created on Feb 16, 2019
 @author: GANESHRAM KANAKASABAI
 '''
 
-import json#importing json
-from labs.common.SensorData import SensorData#importing sensorData
-from labs.common.ActuatorData import ActuatorData#importing ActuatorData
-'''
-Creating a class DataUtil where the data is transformed to json format 
-which is been stored as a text file
-'''
+import json
+from labs.common.SensorData import SensorData
+from labs.common.ActuatorData import ActuatorData
+
 class DataUtil(object):
     '''
-    constructor
-    _init_() is called during object initialization.
+    This class contains function for conversion from 
+    json to Sensor Data object and vice versa
     '''
-    
+
     def __init__(self):
         '''
-     Function toJsonfromSensor is used to transform the data from the sensor to
-     json format
-     @param sensor data : The sensor data is transformed into json format
+        Constructor
         '''
     
+    '''
+    Function to convert SensorData to json data
+    @param SensorData : SensorData object
+    @return jsonSd : Json data
+    '''
     def toJsonfromSensor(self, SensorData):
         data = {};
         data['name'] = SensorData.name;
@@ -31,48 +31,47 @@ class DataUtil(object):
         data['maxVal'] = SensorData.getMaxValue();
         data['minVal'] = SensorData.getMinValue();
         data['curVal'] = SensorData.getValue();
-        data['time'] = str(SensorData.timestamp);
+        data['timeStamp'] = str(SensorData.timestamp);
         self.jsonSd = json.dumps(data)
         outputSd = open('sensordata.txt','w')
         outputSd.write(self.jsonSd)
         return self.jsonSd
+    
     '''
-    Function toSensorfromJson is used to transform the Json data to sensor readable data
-    @param json data : json data is transformed to sensor readable data
-    '''
-        
+    Function to convert SensorData to json data
+    @param SensorData : SensorData object
+    @return jsonSd : Json data
+    '''    
     def toSensorfromJson(self,jsonData):
         sdDict = json.loads(jsonData)
-        #print(" decode [pre] --> " + str(sdDict))
-        sd = SensorData()
+        
+        sd = SensorData('Temperature',0,30)
         sd.name = sdDict['name']
         sd.timeStamp = sdDict['timeStamp']
-        sd.avgValue = sdDict['avgValue']
-        sd.minValue = sdDict['minValue']
-        sd.maxValue = sdDict['maxValue']
-        sd.curValue = sdDict['curValue']
-        sd.totValue = sdDict['totValue']
-        sd.sampleCount = sdDict['sampleCount']
-        #print(" decode [post] --> " + str(sd))
+        sd.avgVal = sdDict['avgVal']
+        sd.minVal = sdDict['minVal']
+        sd.maxVal = sdDict['maxVal']
+        sd.curVal = sdDict['curVal']
+        
         return sd
     '''
-    This function is used to transform the actuator data into json format
-    @param actuator data : this actuator data is transformed to json
-    '''
-    
+    Function to convert Json to Actuator data
+    @param actuatordata : ActuatorData object
+    @return jsonSd : Json data
+    ''' 
     def actuatorTojson(self,actuatordata):
         self.jsonAd = json.dumps(actuatordata.__dict__)
         outputAd = open('actuatordata.txt','w')
         outputAd.write(self.jsonAd)
         return self.jsonAd
+     
     '''
-    This function is used to transform the json formatted data into actuator data
-    @param jsonData : This json data is transformed into actuator data 
+    Function to convert ActuatorData to json data
+    @param jsondata : JsonData object
+    @return ad : ActuatorData data
     '''
-    
     def jsonToactuator(self,jsonData):
         adDict = json.loads(jsonData)
-        #print(" decode [pre] --> " + str(adDict))
         ad = ActuatorData()
         ad.name = adDict['name']
         ad.timeStamp = adDict['timeStamp']
@@ -81,7 +80,6 @@ class DataUtil(object):
         ad.errCode = adDict['errCode']
         ad.statusCode = adDict['statusCode']
         ad.stateData = adDict['stateData']
-        ad.curValue = adDict['curValue']
-        #print(" decode [post] --> " + str(ad))
+        ad.curValue = adDict['curValue']  
         return ad
         

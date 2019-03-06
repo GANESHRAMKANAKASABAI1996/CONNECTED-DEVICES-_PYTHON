@@ -2,8 +2,10 @@
 Created on Feb 1, 2019
 @author: GANESHRAM KANAKASABAI
 '''
-import os#importing os
-from datetime import datetime#importing datetime to perform date and time operations
+
+
+import os #importing os
+from datetime import datetime #importing datetime to perform date and time operations
 COMMAND_OFF = 0
 COMMAND_ON = 1
 COMMAND_SET = 2
@@ -13,14 +15,9 @@ STATUS_ACTIVE = 1
 ERROR_OK = 0
 ERROR_COMMAND_FAILED = 1
 ERROR_NON_RESPONSIBLE = -1
-'''
-This class is created to create an Actuator Data to interact with Raspberry Pi
-'''
-
 class ActuatorData():
     '''
-    constructor
-    _init_() is called during object initialization.
+    This class is created to create an Actuator Data to interact with Raspberry Pi
     '''
     
     def __init__(self):
@@ -40,7 +37,8 @@ class ActuatorData():
     
     '''
     def getCommand(self):
-            return self.command
+        return self.command
+    
     '''
     This function returns the name
     @return: name
@@ -81,7 +79,6 @@ class ActuatorData():
     This function returns the error values
     @return: hasError
     '''
-    
     def hasError(self):
         return self.hasError
     '''
@@ -139,10 +136,6 @@ class ActuatorData():
         self.errCode = data.getErrorCode()
         self.stateData = data.getStateData()
         self.val = data.getValue()
-    '''
-    This function updates the timeStamp value
-    '''
-        
     def updateTimeStamp(self):
         self.timeStamp = str(datetime.now())
         
