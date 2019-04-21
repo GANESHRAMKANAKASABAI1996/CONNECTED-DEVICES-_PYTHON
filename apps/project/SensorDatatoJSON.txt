@@ -1,0 +1,1 @@
+{"temperature": 19.72, "pressure": 990.84, "humidity": 39.13}
